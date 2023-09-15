@@ -23,17 +23,28 @@ export const Header = styled.div`
   font-size: 1.6rem;
 `;
 
+export const Label = styled.label`
+  font-size: 1.2rem;
+  color: var(--sub-0);
+`;
+
 export const Input = styled.input`
-  outline: 2px solid #888;
+  outline: 2px solid var(--sub-1);
   border-radius: 4px;
-  line-height: 2.2rem;
+  line-height: 2.4rem;
   padding: 0 8px;
 
   &:focus {
-    outline: 2px solid var(--primary-color);
+    outline: 4px solid var(--primary);
   }
 `;
 
-export const Footer = styled.div`
-  font-size: 1.2rem;
-`;
+export const Footer = {
+  Message: styled.div`
+    font-size: 1.3rem;
+  `,
+  BoldMessage: styled.span`
+    color: var(--primary);
+    cursor: pointer;
+  `,
+};
