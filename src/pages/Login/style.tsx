@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PALETTE } from '@styles/GlobalStyles';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ export const Container = styled.div`
 export const FormBox = styled.form`
   box-sizing: border-box;
   width: 600px;
-  height: 400px;
   padding: 18px 32px;
   position: relative;
   display: flex;
@@ -32,19 +32,25 @@ export const Input = styled.input`
   outline: 2px solid var(--sub-1);
   border-radius: 4px;
   line-height: 2.4rem;
-  padding: 0 8px;
+  padding: 0 12px;
 
   &:focus {
     outline: 4px solid var(--primary);
   }
 `;
 
+interface BoldMessageProps {
+  color?: PALETTE;
+}
+
 export const Footer = {
   Message: styled.div`
+    color: var(${PALETTE.SUB_0});
     font-size: 1.3rem;
+    text-align: center;
   `,
-  BoldMessage: styled.span`
-    color: var(--primary);
+  BoldMessage: styled.span<BoldMessageProps>`
+    color: var(${({ color }) => (color ? color : PALETTE.PRIMARY)});
     cursor: pointer;
   `,
 };

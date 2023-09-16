@@ -1,7 +1,8 @@
-import { FC, FormEventHandler, useCallback, useState } from 'react';
-import { Container, Footer, FormBox, Header, Input, Label } from './style';
-import Button from '../../components/Atoms/common/Button';
-import useInput from '../../components/hooks/useInput';
+import { FC, FormEventHandler, useCallback } from 'react';
+import { Container, Footer, FormBox, Header, Input, Label } from '@pages/Login/style';
+import Button from '@atoms/common/Button';
+import useInput from '@hooks/useInput';
+import { Link } from 'react-router-dom';
 
 interface IProps {}
 
@@ -21,16 +22,22 @@ const Login: FC<IProps> = () => {
     <Container>
       <FormBox onSubmit={onSubmitForm}>
         <Header className="mb-8">로그인 부탁드립니다.</Header>
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email" className="mb-1">
+          Email
+        </Label>
         <Input id="email" value={email} onChange={onChangeEmailHandler} className="mb-5" type="email" />
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password" className="mb-1">
+          Password
+        </Label>
         <Input id="password" value={password} onChange={onChangePasswordHandler} className="mb-8" type="password" />
         <Button className="mb-10" type="submit" full>
-          로그인
+          Sign In
         </Button>
         <Footer.Message>
           아직 회원이 아니신가요?
-          <Footer.BoldMessage className="ml-4">회원가입해주세요.</Footer.BoldMessage>
+          <Footer.BoldMessage className="ml-4">
+            <Link to="/signup">회원가입해주세요.</Link>
+          </Footer.BoldMessage>
         </Footer.Message>
       </FormBox>
     </Container>
