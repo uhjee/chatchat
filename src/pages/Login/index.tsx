@@ -1,5 +1,5 @@
 import { FC, FormEventHandler, useCallback } from 'react';
-import { Container, Footer, FormBox, Header, Input, Label } from '@pages/Login/style';
+import { Container, Footer, FormBox, Header, Input, LabelBar } from '@pages/Login/style';
 import Button from '@atoms/common/Button';
 import useInput from '@hooks/useInput';
 import { Link } from 'react-router-dom';
@@ -22,13 +22,14 @@ const Login: FC<IProps> = () => {
     <Container>
       <FormBox onSubmit={onSubmitForm}>
         <Header className="mb-8">로그인 부탁드립니다.</Header>
-        <Label htmlFor="email" className="mb-1">
-          Email
-        </Label>
+        <LabelBar className="mb-1">
+          <LabelBar.Label htmlFor="email">Email</LabelBar.Label>
+          <LabelBar.Message className="ml-2">df??</LabelBar.Message>
+        </LabelBar>
         <Input id="email" value={email} onChange={onChangeEmailHandler} className="mb-5" type="email" />
-        <Label htmlFor="password" className="mb-1">
-          Password
-        </Label>
+        <LabelBar className="mb-1">
+          <LabelBar.Label htmlFor="password">Password</LabelBar.Label>
+        </LabelBar>
         <Input id="password" value={password} onChange={onChangePasswordHandler} className="mb-8" type="password" />
         <Button className="mb-10" type="submit" full>
           Sign In

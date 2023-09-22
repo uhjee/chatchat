@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PALETTE } from '@styles/GlobalStyles';
+import { PALETTE, PalltteOption } from '@styles/GlobalStyles';
 
 export const Container = styled.div`
   display: flex;
@@ -23,10 +23,22 @@ export const Header = styled.div`
   font-size: 1.6rem;
 `;
 
-export const Label = styled.label`
-  font-size: 1.2rem;
-  color: var(--sub-0);
-`;
+export const Label = {
+  Wrapper: styled.div`
+    display: flex;
+    justify-content: space-between;
+  `,
+  Label: styled.label`
+    font-size: 1.2rem;
+    color: var(--sub-0);
+  `,
+  Message: styled.span<PalltteOption>`
+    font-size: 1rem;
+    color: var(${({ color }) => (color ? color : PALETTE.WHITE)});
+  `,
+};
+
+export const LabelBar = Object.assign(Label.Wrapper, { Label: Label.Label, Message: Label.Message });
 
 export const Input = styled.input`
   outline: 2px solid var(--sub-1);
@@ -39,17 +51,13 @@ export const Input = styled.input`
   }
 `;
 
-interface BoldMessageProps {
-  color?: PALETTE;
-}
-
 export const Footer = {
   Message: styled.div`
     color: var(${PALETTE.SUB_0});
     font-size: 1.3rem;
     text-align: center;
   `,
-  BoldMessage: styled.span<BoldMessageProps>`
+  BoldMessage: styled.span<PalltteOption>`
     color: var(${({ color }) => (color ? color : PALETTE.PRIMARY)});
     cursor: pointer;
   `,

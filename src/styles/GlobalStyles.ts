@@ -10,6 +10,10 @@ export enum PALETTE {
   WHITE = '--white',
 }
 
+export interface PalltteOption {
+  color?: PALETTE;
+}
+
 export default createGlobalStyle`
 
   ${reset}

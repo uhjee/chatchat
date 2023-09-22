@@ -1,5 +1,5 @@
 import { FC, FormEventHandler, useCallback, useState } from 'react';
-import { Container, Footer, FormBox, Header, Input, Label } from '@pages/Login/style';
+import { Container, Footer, FormBox, Header, Input, LabelBar } from '@pages/Login/style';
 import useInput from '@hooks/useInput';
 import Button from '@atoms/common/Button';
 import { Link } from 'react-router-dom';
@@ -45,14 +45,14 @@ const Signup: FC<IProps> = () => {
     <Container>
       <FormBox onSubmit={onSubmitForm}>
         <Header className="mb-8">회원가입</Header>
-        <Label htmlFor="email" className="mb-1">
-          Email
-        </Label>
+        <LabelBar className="mb-1">
+          <LabelBar.Label htmlFor="email">Email</LabelBar.Label>
+        </LabelBar>
         <Input id="email" value={email} onChange={onChangeEmailHandler} className="mb-5" type="email" />
         <div className="flex flex-col mb-8">
-          <Label htmlFor="password" className="mb-1">
-            Password
-          </Label>
+          <LabelBar className="mb-1">
+            <LabelBar.Label htmlFor="password">Password</LabelBar.Label>
+          </LabelBar>
           <Input
             id="password"
             value={password}
@@ -62,9 +62,10 @@ const Signup: FC<IProps> = () => {
           />
           {!isEmptyPassword && (
             <>
-              <Label htmlFor="password-two" className="mt-2 mb-1">
-                Password를 한 번 더 입력해주세요. {validPasswords === 'SUCCESS' && <span>✅</span>}
-              </Label>
+              <LabelBar className="mt-2 mb-1">
+                <LabelBar.Label htmlFor="password">Password를 한 번 더 입력해주세요.</LabelBar.Label>
+                {validPasswords === 'SUCCESS' && <LabelBar.Message>✅</LabelBar.Message>}
+              </LabelBar>
               <Input
                 id="password-two"
                 value={passwordTwo}
